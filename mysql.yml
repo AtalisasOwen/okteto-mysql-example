@@ -1,0 +1,57 @@
+kind: Service
+apiVersion: v1
+metadata:
+  labels:
+    tant-app: tant-mysql
+  name: tant-mysql
+  namespace: edenleung
+spec:
+  ports:
+    - port: 13306
+      targetPort: 3306
+  selector:
+    tant-app: tant-mysql
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mysql-pv-claim
+  labels:
+    tant-app: mysql-pv-claim
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+---
+apiVersion: apps/v1 # for k8s versions before 1.9.0 use apps/v1beta2  and before 1.8.0 use extensions/v1beta1
+kind: Deployment
+metadata:
+  name: tant-mysql
+  labels:
+    tant-app: tant-mysql
+spec:
+  selector:
+    matchLabels:
+      tant-app: tant-mysql
+  template:
+    metadata:
+      labels:
+        tant-app: tant-mysql
+    spec:
+      containers:
+        - image: mysql:5.6
+          name: tant-mysql
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: "1234"
+          ports:
+            - containerPort: 3306
+          volumeMounts:
+            - name: mysql-persistent-storage
+              mountPath: /var/lib/mysql
+      volumes:
+        - name: mysql-persistent-storage
+          persistentVolumeClaim:
+            claimName: mysql-pv-claim
