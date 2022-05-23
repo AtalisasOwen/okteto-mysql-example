@@ -5,9 +5,13 @@ metadata:
     tant-app: tant-mysql
   name: tant-mysql
   namespace: atalisasowen
+  annotations:
+    dev.okteto.com/auto-ingress: "true"
 spec:
+  type: ClusterIP
   ports:
     - port: 3306
+      protocol: TCP
       targetPort: 3306
   selector:
     tant-app: tant-mysql
