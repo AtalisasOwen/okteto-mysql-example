@@ -3,4 +3,4 @@ deploy:
 dev:
   tant-mysql:
     forward:
-      - 13306:13306
+      - 3306:3306
