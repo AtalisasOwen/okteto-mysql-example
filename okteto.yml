@@ -2,5 +2,6 @@ deploy:
   - kubectl apply -f mysql.yml
 dev:
   tant-mysql:
+    interface: 0.0.0.0
     reverse:
       - 3306:3306
