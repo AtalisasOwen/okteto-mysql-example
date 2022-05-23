@@ -4,7 +4,7 @@ metadata:
   labels:
     tant-app: tant-mysql
   name: tant-mysql
-  namespace: edenleung
+  namespace: atalisasowen
 spec:
   ports:
     - port: 13306
