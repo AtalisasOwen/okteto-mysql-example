@@ -2,5 +2,5 @@ deploy:
   - kubectl apply -f mysql.yml
 dev:
   tant-mysql:
-    forward:
+    reverse:
       - 3306:3306
