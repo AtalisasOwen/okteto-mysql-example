@@ -1,2 +1,6 @@
 deploy:
   - kubectl apply -f mysql.yml
+dev:
+  tant-mysql:
+    forward:
+      - 13306:13306
