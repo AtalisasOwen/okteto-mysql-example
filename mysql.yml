@@ -7,7 +7,7 @@ metadata:
   namespace: atalisasowen
 spec:
   ports:
-    - port: 13306
+    - port: 3306
       targetPort: 3306
   selector:
     tant-app: tant-mysql
