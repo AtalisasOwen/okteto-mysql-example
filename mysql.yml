@@ -5,8 +5,6 @@ metadata:
     tant-app: tant-mysql
   name: tant-mysql
   namespace: atalisasowen
-  annotations:
-    dev.okteto.com/auto-ingress: "true"
 spec:
   type: NodePort
   ports:
