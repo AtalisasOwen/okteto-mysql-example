@@ -14,7 +14,7 @@ spec:
       protocol: TCP
       targetPort: 3306
       name: http
-      nodePort: 32306
+      nodePort: 3306
   selector:
     tant-app: tant-mysql
 ---
